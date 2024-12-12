@@ -46,7 +46,7 @@ namespace Clock
 				"Info",
 				MessageBoxButtons.OK,
 				MessageBoxIcon.Information
-				);
+			);
 		}
 	}
 }
