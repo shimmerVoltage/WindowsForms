@@ -31,7 +31,7 @@ namespace Clock
 		private void btnHideControls_Click(object sender, EventArgs e)
 		{
 			cbShowDate.Visible = false;
-			btnHideControls.Visible = false;
+			btnHideControls.Visible = false; 
 			this.TransparencyKey = this.BackColor;
 			this.FormBorderStyle = FormBorderStyle.None;
 			labelTime.BackColor = Color.AliceBlue;
