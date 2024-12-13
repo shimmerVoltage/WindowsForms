@@ -47,6 +47,13 @@ namespace Clock
 				MessageBoxButtons.OK,
 				MessageBoxIcon.Information
 			);
+
+			cbShowDate.Visible = true;
+			btnHideControls.Visible = true;
+			this.TransparencyKey = default;
+			this.FormBorderStyle = FormBorderStyle.Sizable;
+			labelTime.BackColor = this.BackColor;
+			this.ShowInTaskbar = true;
 		}
 	}
 }
