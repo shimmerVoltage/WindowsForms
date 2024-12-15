@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,8 +16,14 @@ namespace Clock
 		public MainForm()
 		{
 			InitializeComponent();
-			labelTime.BackColor = Color.AliceBlue;		
-
+			labelTime.BackColor = Color.AliceBlue;
+			//labelTime.Font = new Font("Bookman Old Style", 20);			
+			
+			PrivateFontCollection fontCollection = new PrivateFontCollection();			
+			fontCollection.AddFontFile("D:\\repos\\WindowsForms\\Clock\\Fonts\\digital-7.ttf");
+			FontFamily family = fontCollection.Families[0];			
+			labelTime.Font = new Font(family, 30);
+			
 			this.Location = new Point(Screen.PrimaryScreen.Bounds.Width - this.Width, 50);	
 		}
 		void SetVisibility(bool visible)
