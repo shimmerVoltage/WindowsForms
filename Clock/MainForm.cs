@@ -15,7 +15,7 @@ namespace Clock
 		public MainForm()
 		{
 			InitializeComponent();
-			labelTime.BackColor = Color.AliceBlue;
+			labelTime.BackColor = Color.AliceBlue;		
 
 			this.Location = new Point(Screen.PrimaryScreen.Bounds.Width - this.Width, 50);	
 		}
@@ -116,6 +116,26 @@ namespace Clock
 				this.TopMost = true;
 				this.TopMost = false;
 			}
-		}		
+		}
+
+		private void cmBCBlack_Click(object sender, EventArgs e)
+		{
+			labelTime.BackColor = Color.Black;
+		}
+
+		private void cmBCWhite_Click(object sender, EventArgs e)
+		{
+			labelTime.BackColor = Color.White;
+		}
+
+		private void cmFCBlack_Click(object sender, EventArgs e)
+		{
+			labelTime.ForeColor = Color.Black;
+		}
+
+		private void cmFCWhite_Click(object sender, EventArgs e)
+		{
+			labelTime.ForeColor = Color.White;
+		}
 	}
 }

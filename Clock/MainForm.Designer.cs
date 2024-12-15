@@ -47,6 +47,10 @@
 			this.btnHideControls = new System.Windows.Forms.Button();
 			this.cbShowWeekDay = new System.Windows.Forms.CheckBox();
 			this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+			this.cmBCBlack = new System.Windows.Forms.ToolStripMenuItem();
+			this.cmBCWhite = new System.Windows.Forms.ToolStripMenuItem();
+			this.cmFCBlack = new System.Windows.Forms.ToolStripMenuItem();
+			this.cmFCWhite = new System.Windows.Forms.ToolStripMenuItem();
 			this.contextMenu.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -123,12 +127,18 @@
 			// 
 			// cmBackColor
 			// 
+			this.cmBackColor.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cmBCBlack,
+            this.cmBCWhite});
 			this.cmBackColor.Name = "cmBackColor";
 			this.cmBackColor.Size = new System.Drawing.Size(270, 34);
 			this.cmBackColor.Text = "Background color";
 			// 
 			// cmForeColor
 			// 
+			this.cmForeColor.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cmFCBlack,
+            this.cmFCWhite});
 			this.cmForeColor.Name = "cmForeColor";
 			this.cmForeColor.Size = new System.Drawing.Size(270, 34);
 			this.cmForeColor.Text = "Foreground color";
@@ -193,6 +203,34 @@
 			this.notifyIcon.Visible = true;
 			this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseDoubleClick);
 			// 
+			// cmBCBlack
+			// 
+			this.cmBCBlack.Name = "cmBCBlack";
+			this.cmBCBlack.Size = new System.Drawing.Size(270, 34);
+			this.cmBCBlack.Text = "Black";
+			this.cmBCBlack.Click += new System.EventHandler(this.cmBCBlack_Click);
+			// 
+			// cmBCWhite
+			// 
+			this.cmBCWhite.Name = "cmBCWhite";
+			this.cmBCWhite.Size = new System.Drawing.Size(270, 34);
+			this.cmBCWhite.Text = "White";
+			this.cmBCWhite.Click += new System.EventHandler(this.cmBCWhite_Click);
+			// 
+			// cmFCBlack
+			// 
+			this.cmFCBlack.Name = "cmFCBlack";
+			this.cmFCBlack.Size = new System.Drawing.Size(270, 34);
+			this.cmFCBlack.Text = "Black";
+			this.cmFCBlack.Click += new System.EventHandler(this.cmFCBlack_Click);
+			// 
+			// cmFCWhite
+			// 
+			this.cmFCWhite.Name = "cmFCWhite";
+			this.cmFCWhite.Size = new System.Drawing.Size(270, 34);
+			this.cmFCWhite.Text = "White";
+			this.cmFCWhite.Click += new System.EventHandler(this.cmFCWhite_Click);
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -232,6 +270,10 @@
 		private System.Windows.Forms.ToolStripMenuItem cmColors;
 		private System.Windows.Forms.ToolStripMenuItem cmBackColor;
 		private System.Windows.Forms.ToolStripMenuItem cmForeColor;
+		private System.Windows.Forms.ToolStripMenuItem cmBCBlack;
+		private System.Windows.Forms.ToolStripMenuItem cmBCWhite;
+		private System.Windows.Forms.ToolStripMenuItem cmFCBlack;
+		private System.Windows.Forms.ToolStripMenuItem cmFCWhite;
 	}
 }
 
