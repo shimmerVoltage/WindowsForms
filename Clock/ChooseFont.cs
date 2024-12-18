@@ -15,6 +15,7 @@ namespace Clock
 		public ChooseFontForm()
 		{
 			InitializeComponent();
+			
 		}
 	}
 }

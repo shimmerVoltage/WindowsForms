@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace Clock
 {
 	public partial class MainForm : Form
@@ -19,6 +20,8 @@ namespace Clock
 
 			this.Location = new Point(Screen.PrimaryScreen.Bounds.Width - this.Width, 50);
 			SetVisibility(false);
+
+			
 		}
 		void SetVisibility(bool visible)
 		{
@@ -142,6 +145,12 @@ namespace Clock
 				}
 
 			}
+		}
+
+		private void cmChooseFont_Click(object sender, EventArgs e)
+		{
+			ChooseFontForm chooseFontForm = new ChooseFontForm();
+			chooseFontForm.Show();
 		}
 	}
 }
