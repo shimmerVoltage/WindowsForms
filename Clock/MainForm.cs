@@ -13,15 +13,16 @@ namespace Clock
 {
 	public partial class MainForm : Form
 	{
+		ChooseFontForm chooseFontForm;
 		public MainForm()
 		{
+			chooseFontForm = new ChooseFontForm();
+
 			InitializeComponent();
 			labelTime.BackColor = Color.AliceBlue;
 
 			this.Location = new Point(Screen.PrimaryScreen.Bounds.Width - this.Width, 50);
-			SetVisibility(false);
-
-			
+			SetVisibility(false);			
 		}
 		void SetVisibility(bool visible)
 		{
@@ -143,13 +144,11 @@ namespace Clock
 					case "Background color": labelTime.BackColor = dialog.Color; break;
 					case "Foreground color": labelTime.ForeColor = dialog.Color; break;
 				}
-
 			}
 		}
 
 		private void cmChooseFont_Click(object sender, EventArgs e)
-		{
-			ChooseFontForm chooseFontForm = new ChooseFontForm();
+		{			
 			chooseFontForm.Show();
 		}
 	}
