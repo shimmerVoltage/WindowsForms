@@ -48,6 +48,8 @@
 			this.btnHideControls = new System.Windows.Forms.Button();
 			this.cbShowWeekDay = new System.Windows.Forms.CheckBox();
 			this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+			this.cmChooseFont = new System.Windows.Forms.ToolStripMenuItem();
+			this.cmShowConsole = new System.Windows.Forms.ToolStripMenuItem();
 			this.contextMenu.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -73,12 +75,14 @@
             this.toolStripSeparator1,
             this.cmShowDate,
             this.cmShowWeekDay,
+            this.cmShowConsole,
             this.toolStripSeparator3,
+            this.cmChooseFont,
             this.cmColors,
             this.toolStripSeparator2,
             this.cmExit});
 			this.contextMenu.Name = "contextMenu";
-			this.contextMenu.Size = new System.Drawing.Size(241, 247);
+			this.contextMenu.Size = new System.Drawing.Size(241, 311);
 			// 
 			// cmTopmost
 			// 
@@ -134,14 +138,14 @@
 			// cmBackColor
 			// 
 			this.cmBackColor.Name = "cmBackColor";
-			this.cmBackColor.Size = new System.Drawing.Size(270, 34);
+			this.cmBackColor.Size = new System.Drawing.Size(263, 34);
 			this.cmBackColor.Text = "Background color";
 			this.cmBackColor.Click += new System.EventHandler(this.SetColor);
 			// 
 			// cmForeColor
 			// 
 			this.cmForeColor.Name = "cmForeColor";
-			this.cmForeColor.Size = new System.Drawing.Size(270, 34);
+			this.cmForeColor.Size = new System.Drawing.Size(263, 34);
 			this.cmForeColor.Text = "Foreground color";
 			this.cmForeColor.Click += new System.EventHandler(this.SetColor);
 			// 
@@ -205,6 +209,21 @@
 			this.notifyIcon.Visible = true;
 			this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseDoubleClick);
 			// 
+			// cmChooseFont
+			// 
+			this.cmChooseFont.Name = "cmChooseFont";
+			this.cmChooseFont.Size = new System.Drawing.Size(240, 32);
+			this.cmChooseFont.Text = "Choose font";
+			this.cmChooseFont.Click += new System.EventHandler(this.cmChooseFont_Click);
+			// 
+			// cmShowConsole
+			// 
+			this.cmShowConsole.CheckOnClick = true;
+			this.cmShowConsole.Name = "cmShowConsole";
+			this.cmShowConsole.Size = new System.Drawing.Size(240, 32);
+			this.cmShowConsole.Text = "Show console";
+			this.cmShowConsole.CheckedChanged += new System.EventHandler(this.cmShowConsole_CheckedChanged);
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -245,6 +264,8 @@
 		private System.Windows.Forms.ToolStripMenuItem cmBackColor;
 		private System.Windows.Forms.ToolStripMenuItem cmForeColor;
 		private System.Windows.Forms.ToolStripMenuItem cmShowControls;
+		private System.Windows.Forms.ToolStripMenuItem cmChooseFont;
+		private System.Windows.Forms.ToolStripMenuItem cmShowConsole;
 	}
 }
 

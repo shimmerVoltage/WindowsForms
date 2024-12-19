@@ -7,18 +7,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace Clock
 {
 	public partial class MainForm : Form
 	{
+		ChooseFontForm fontDialog = null;
 		public MainForm()
 		{
 			InitializeComponent();
-			labelTime.BackColor = Color.AliceBlue;
+			labelTime.BackColor = Color.Black;
+			labelTime.ForeColor = Color.Red;
 
 			this.Location = new Point(Screen.PrimaryScreen.Bounds.Width - this.Width, 50);
 			SetVisibility(false);
+			
+			cmShowConsole.Checked = true;
+			fontDialog = new ChooseFontForm();	
 		}
 		void SetVisibility(bool visible)
 		{
@@ -26,20 +32,20 @@ namespace Clock
 			cbShowWeekDay.Visible = visible;
 			btnHideControls.Visible = visible;
 			this.TransparencyKey = visible ? Color.Empty : this.BackColor;
-			this.FormBorderStyle = visible ? FormBorderStyle.SizableToolWindow : FormBorderStyle.None;			
-			this.ShowInTaskbar = visible;			
+			this.FormBorderStyle = visible ? FormBorderStyle.SizableToolWindow : FormBorderStyle.None;
+			this.ShowInTaskbar = visible;
 		}
 
 		private void timer_Tick(object sender, EventArgs e)
-		{			
+		{
 			labelTime.Text = DateTime.Now.ToString("hh:mm:ss tt", System.Globalization.CultureInfo.InvariantCulture);
-		
-			if(cbShowDate.Checked)
+
+			if (cbShowDate.Checked)
 			{
 				labelTime.Text += "\n";
 				labelTime.Text += DateTime.Now.ToString("yyyy.MM.dd");
 			}
-			if(cbShowWeekDay.Checked)
+			if (cbShowWeekDay.Checked)
 			{
 				labelTime.Text += "\n";
 				labelTime.Text += DateTime.Now.DayOfWeek;
@@ -107,7 +113,7 @@ namespace Clock
 
 		private void cbShowWeekDay_CheckedChanged(object sender, EventArgs e)
 		{
-			cmShowWeekDay.Checked = cbShowWeekDay.Checked;			
+			cmShowWeekDay.Checked = cbShowWeekDay.Checked;
 		}
 
 		private void notifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -126,7 +132,7 @@ namespace Clock
 
 		private void SetColor(object sender, EventArgs e)
 		{
-			ColorDialog dialog = new ColorDialog();	
+			ColorDialog dialog = new ColorDialog();
 			dialog.Color = labelTime.BackColor;
 			switch (((ToolStripMenuItem)sender).Text)
 			{
@@ -143,5 +149,24 @@ namespace Clock
 
 			}
 		}
+
+		private void cmChooseFont_Click(object sender, EventArgs e)
+		{
+			if(fontDialog.ShowDialog() == DialogResult.OK)
+				labelTime.Font = fontDialog.Font;
+		}
+
+		private void cmShowConsole_CheckedChanged(object sender, EventArgs e)
+		{
+			if ((sender as ToolStripMenuItem).Checked)
+				AllocConsole();
+			else
+				FreeConsole();
+
+		}
+		[DllImport("kernel32.dll")]
+		public static extern bool AllocConsole();
+		[DllImport("kernel32.dll")]
+		public static extern bool FreeConsole();
 	}
 }
