@@ -17,7 +17,7 @@ namespace Clock
 	public partial class MainForm : Form
 	{
 		ChooseFontForm fontDialog = null;
-
+		AlarmsForm alarms = null;	
 		public MainForm()
 		{
 			InitializeComponent();
@@ -30,6 +30,7 @@ namespace Clock
 			cmShowConsole.Checked = true;
 			LoadSettings();
 			//fontDialog = new ChooseFontForm();	
+			alarms = new AlarmsForm();
 		}
 
 		void SetVisibility(bool visible)
@@ -57,6 +58,7 @@ namespace Clock
 			sw.Close();
 			//Process.Start("notepad", "Settings.ini");
 		}
+
 		void LoadSettings()
 		{
 			string execution_path = Path.GetDirectoryName(Application.ExecutablePath); 
@@ -78,7 +80,11 @@ namespace Clock
 
 		private void timer_Tick(object sender, EventArgs e)
 		{
-			labelTime.Text = DateTime.Now.ToString("hh:mm:ss tt", System.Globalization.CultureInfo.InvariantCulture);
+			labelTime.Text = DateTime.Now.ToString
+				(
+				"hh:mm:ss tt", 
+				System.Globalization.CultureInfo.InvariantCulture
+				);
 
 			if (cbShowDate.Checked)
 			{
@@ -94,38 +100,14 @@ namespace Clock
 		}
 
 		private void btnHideControls_Click(object sender, EventArgs e)
-		{
-			//cbShowDate.Visible = false;
-			//btnHideControls.Visible = false;
-			//this.TransparencyKey = this.BackColor;
-			//this.FormBorderStyle = FormBorderStyle.None;
-			//labelTime.BackColor = Color.AliceBlue;
-			//this.ShowInTaskbar = false;
-
+		{	
 			SetVisibility(cmShowControls.Checked = false);
 		}
 
 		private void labelTime_DoubleClick(object sender, EventArgs e)
 		{
-			//MessageBox.Show
-			//	(
-			//	this,
-			//	"Вы два раза щелкнули мыщью по чесам времени и теперь вы управляете мыщью",
-			//	"Info",
-			//	MessageBoxButtons.OK,
-			//	MessageBoxIcon.Information
-			//	);
-
-			//cbShowDate.Visible = true;
-			//btnHideControls.Visible = true;
-			//this.TransparencyKey = Color.Empty;
-			//this.FormBorderStyle = FormBorderStyle.FixedToolWindow;
-			//labelTime.BackColor = Color.AliceBlue;
-			//this.ShowInTaskbar = true;
-
 			SetVisibility(cmShowControls.Checked = true);
 		}
-
 
 		private void cmExit_Click(object sender, EventArgs e)
 		{
@@ -136,6 +118,7 @@ namespace Clock
 		{
 			this.TopMost = cmTopmost.Checked;
 		}
+
 		private void cbShowDate_CheckedChanged(object sender, EventArgs e)
 		{
 			cmShowDate.Checked = cbShowDate.Checked;
@@ -205,8 +188,10 @@ namespace Clock
 
 		}
 		[DllImport("kernel32.dll")]
+
 		public static extern bool AllocConsole();
 		[DllImport("kernel32.dll")]
+
 		public static extern bool FreeConsole();
 
 		private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -221,6 +206,13 @@ namespace Clock
 			if (cmLoadOnWinStartup.Checked) rk.SetValue(key_name, Application.ExecutablePath);
 			else rk.DeleteValue(key_name, false);
 			rk.Dispose();
+		}
+
+		private void cmAlarm_Click(object sender, EventArgs e)
+		{
+			alarms.StartPosition = FormStartPosition.Manual;
+			alarms.Location = new Point(this.Location.X - alarms.Width, this.Location.Y * 2);
+			alarms.ShowDialog();			
 		}
 	}
 }
