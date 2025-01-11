@@ -29,12 +29,22 @@ namespace Clock
 		//}
 		public void CompressWeekDays(bool[] days)
 		{
-			for(byte i = 0; i < days.Length; i++)
+			for (byte i = 0; i < days.Length; i++)
 			{
 				//byte day = 1;
 				if (days[i]) week |= (byte)(1 << i);
 				//if (days[i]) SetDay(i);
 			}
+		}
+
+		public bool[] ExtractWeekdays()
+		{
+			bool[] weekDays = new bool[7];
+			for(byte i = 0; i < 7; i++)
+			{
+				weekDays[i] = (week & (byte)(1 << i)) != 0;				
+			}
+			return weekDays;
 		}
 		public override string ToString()
 		{
