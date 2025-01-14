@@ -43,6 +43,8 @@
 			this.cmColors = new System.Windows.Forms.ToolStripMenuItem();
 			this.cmBackColor = new System.Windows.Forms.ToolStripMenuItem();
 			this.cmForeColor = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+			this.cmAlarms = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
 			this.cmLoadOnWinStartup = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -52,9 +54,9 @@
 			this.btnHideControls = new System.Windows.Forms.Button();
 			this.cbShowWeekDay = new System.Windows.Forms.CheckBox();
 			this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
-			this.cmAlarms = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+			this.axWindowsMediaPlayer = new AxWMPLib.AxWindowsMediaPlayer();
 			this.contextMenu.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// labelTime
@@ -62,7 +64,7 @@
 			this.labelTime.AutoSize = true;
 			this.labelTime.ContextMenuStrip = this.contextMenu;
 			this.labelTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 32F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.labelTime.Location = new System.Drawing.Point(13, 10);
+			this.labelTime.Location = new System.Drawing.Point(25, 9);
 			this.labelTime.Name = "labelTime";
 			this.labelTime.Size = new System.Drawing.Size(310, 73);
 			this.labelTime.TabIndex = 0;
@@ -90,7 +92,7 @@
             this.toolStripSeparator2,
             this.cmExit});
 			this.contextMenu.Name = "contextMenu";
-			this.contextMenu.Size = new System.Drawing.Size(300, 387);
+			this.contextMenu.Size = new System.Drawing.Size(300, 354);
 			// 
 			// cmTopmost
 			// 
@@ -172,6 +174,18 @@
 			this.cmForeColor.Text = "Foreground color";
 			this.cmForeColor.Click += new System.EventHandler(this.SetColor);
 			// 
+			// toolStripSeparator5
+			// 
+			this.toolStripSeparator5.Name = "toolStripSeparator5";
+			this.toolStripSeparator5.Size = new System.Drawing.Size(296, 6);
+			// 
+			// cmAlarms
+			// 
+			this.cmAlarms.Name = "cmAlarms";
+			this.cmAlarms.Size = new System.Drawing.Size(299, 32);
+			this.cmAlarms.Text = "Alarms";
+			this.cmAlarms.Click += new System.EventHandler(this.cmAlarm_Click);
+			// 
 			// toolStripSeparator4
 			// 
 			this.toolStripSeparator4.Name = "toolStripSeparator4";
@@ -206,7 +220,7 @@
 			// 
 			this.cbShowDate.AutoSize = true;
 			this.cbShowDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.cbShowDate.Location = new System.Drawing.Point(26, 322);
+			this.cbShowDate.Location = new System.Drawing.Point(26, 220);
 			this.cbShowDate.Name = "cbShowDate";
 			this.cbShowDate.Size = new System.Drawing.Size(252, 41);
 			this.cbShowDate.TabIndex = 1;
@@ -217,7 +231,7 @@
 			// btnHideControls
 			// 
 			this.btnHideControls.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.btnHideControls.Location = new System.Drawing.Point(26, 448);
+			this.btnHideControls.Location = new System.Drawing.Point(26, 346);
 			this.btnHideControls.Name = "btnHideControls";
 			this.btnHideControls.Size = new System.Drawing.Size(252, 99);
 			this.btnHideControls.TabIndex = 2;
@@ -229,7 +243,7 @@
 			// 
 			this.cbShowWeekDay.AutoSize = true;
 			this.cbShowWeekDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.cbShowWeekDay.Location = new System.Drawing.Point(26, 379);
+			this.cbShowWeekDay.Location = new System.Drawing.Point(26, 277);
 			this.cbShowWeekDay.Name = "cbShowWeekDay";
 			this.cbShowWeekDay.Size = new System.Drawing.Size(359, 41);
 			this.cbShowWeekDay.TabIndex = 3;
@@ -245,23 +259,21 @@
 			this.notifyIcon.Visible = true;
 			this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseDoubleClick);
 			// 
-			// cmAlarms
+			// axWindowsMediaPlayer
 			// 
-			this.cmAlarms.Name = "cmAlarms";
-			this.cmAlarms.Size = new System.Drawing.Size(299, 32);
-			this.cmAlarms.Text = "Alarms";
-			this.cmAlarms.Click += new System.EventHandler(this.cmAlarm_Click);
-			// 
-			// toolStripSeparator5
-			// 
-			this.toolStripSeparator5.Name = "toolStripSeparator5";
-			this.toolStripSeparator5.Size = new System.Drawing.Size(296, 6);
+			this.axWindowsMediaPlayer.Enabled = true;
+			this.axWindowsMediaPlayer.Location = new System.Drawing.Point(12, 54);
+			this.axWindowsMediaPlayer.Name = "axWindowsMediaPlayer";
+			this.axWindowsMediaPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer.OcxState")));
+			this.axWindowsMediaPlayer.Size = new System.Drawing.Size(278, 73);
+			this.axWindowsMediaPlayer.TabIndex = 4;
 			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(455, 586);
+			this.ClientSize = new System.Drawing.Size(486, 505);
+			this.Controls.Add(this.axWindowsMediaPlayer);
 			this.Controls.Add(this.cbShowWeekDay);
 			this.Controls.Add(this.btnHideControls);
 			this.Controls.Add(this.cbShowDate);
@@ -273,6 +285,7 @@
 			this.Text = "Clock PV_319";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
 			this.contextMenu.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -304,6 +317,7 @@
 		private System.Windows.Forms.ToolStripMenuItem cmLoadOnWinStartup;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
 		private System.Windows.Forms.ToolStripMenuItem cmAlarms;
+		private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer;
 	}
 }
 
