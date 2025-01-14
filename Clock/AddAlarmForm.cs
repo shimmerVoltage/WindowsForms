@@ -65,8 +65,7 @@ namespace Clock
 		{
 			if(open.ShowDialog() == DialogResult.OK)
 			{
-				lblAlarmFile.Text = open.FileName;
-				
+				lblAlarmFile.Text = open.FileName;				
 			}
 		}
 
