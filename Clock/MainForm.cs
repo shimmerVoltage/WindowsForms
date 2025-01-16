@@ -98,6 +98,15 @@ namespace Clock
 			return date1.Year == date2.Year && date1.Month == date2.Month && date1.Date == date2.Date;
 		}
 
+		void SetPlayerInvisible(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e)
+		{
+			if (
+				axWindowsMediaPlayer.playState == WMPLib.WMPPlayState.wmppsMediaEnded ||
+				axWindowsMediaPlayer.playState == WMPLib.WMPPlayState.wmppsStopped
+				)
+				axWindowsMediaPlayer.Visible = false;
+		}
+
 		void PlayAlarm()
 		{
 			axWindowsMediaPlayer.URL = nextAlarm.Filename;
