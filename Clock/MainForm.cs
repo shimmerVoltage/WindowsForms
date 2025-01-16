@@ -93,6 +93,11 @@ namespace Clock
 			return actualAlarms.Min();
 		}
 
+		bool CompareDates(DateTime date1, DateTime date2)
+		{
+			return date1.Year == date2.Year && date1.Month == date2.Month && date1.Date == date2.Date;
+		}
+
 		void PlayAlarm()
 		{
 			axWindowsMediaPlayer.URL = nextAlarm.Filename;
@@ -122,8 +127,14 @@ namespace Clock
 			notifyIcon.Text = labelTime.Text;
 
 
-			if  (
-				nextAlarm != null &&
+			if (
+				(object)nextAlarm != null &&
+				(
+				nextAlarm.Date == DateTime.MinValue ? 
+				nextAlarm.Weekdays.Contains(DateTime.Now.DayOfWeek) : 
+				CompareDates(nextAlarm.Date, DateTime.Now)
+				) &&
+				//nextAlarm.Weekdays.Contains(DateTime.Now.DayOfWeek) &&
 				nextAlarm.Time.Hours == DateTime.Now.Hour && 
 				nextAlarm.Time.Minutes == DateTime.Now.Minute && 
 				nextAlarm.Time.Seconds == DateTime.Now.Second				
@@ -132,11 +143,11 @@ namespace Clock
 				System.Threading.Thread.Sleep(1000);
 				PlayAlarm();
 				//MessageBox.Show(this, nextAlarm.ToString(), "Alarm", MessageBoxButtons.OK, MessageBoxIcon.Information);
-				nextAlarm = null;				
+				nextAlarm = null;		
 			}
 
 			if (alarms.LB_Alarms.Items.Count > 0) nextAlarm = FindNextAlarm();//nextAlarm = alarms.LB_Alarms.Items.Cast<Alarm>().ToArray().Min();
-			if(nextAlarm != null) Console.WriteLine(nextAlarm);
+			if (nextAlarm != null) Console.WriteLine(nextAlarm);
 		}
 
 		private void btnHideControls_Click(object sender, EventArgs e)

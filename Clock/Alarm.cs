@@ -38,6 +38,7 @@ namespace Clock
 			this.Message = other.Message;
 			Console.WriteLine($"CopyConstructor{this.GetHashCode()}");
 		}
+
 		public override string ToString()
 		{
 			string info = "";
@@ -50,6 +51,7 @@ namespace Clock
 			info += $"{Message}\t";
 			return info;
 		}
+
 
 		//public static bool operator >(Alarm left, Alarm right)
 		//{
