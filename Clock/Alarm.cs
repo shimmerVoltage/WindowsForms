@@ -44,7 +44,7 @@ namespace Clock
 			string info = "";
 			if (Date != DateTime.MinValue) info += $"{Date}\t";
 			info += DateTime.Today.Add(Time).ToString("hh:mm:ss tt");
-			//info += Time;//.ToString(@"hh\:mm\:ss");
+			
 			info += "\t";
 			info += $"{Weekdays}\t";
 			info += $"{Filename}\t";
@@ -52,6 +52,18 @@ namespace Clock
 			return info;
 		}
 
+		public string ToFileString()
+		{
+			string info = "";
+			if (Date != DateTime.MinValue) info += $"{Date.Ticks}";
+
+			info += $",{Time.Ticks},";
+			
+			info += $"{Weekdays.ToFileString()},";
+			info += $"{Filename},";
+			info += $"{Message},";
+			return info;
+		}
 
 		//public static bool operator >(Alarm left, Alarm right)
 		//{
